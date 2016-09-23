@@ -45,12 +45,14 @@ namespace BankAccountProject
         {
             Console.WriteLine("Enter amount to be deposted.");
             double deposit = double.Parse(Console.ReadLine());
+            return deposit;
         }
         //  Withdrawl
         public double Withdrawl()
         {
             Console.WriteLine("Enter amount to be withdrawn.");
             double withdrawl = double.Parse(Console.ReadLine());
+            return withdrawl;
         }
         //  Balance
     }

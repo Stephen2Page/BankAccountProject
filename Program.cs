@@ -11,20 +11,74 @@ namespace BankAccountProject
     {
         static void Main(string[] args)
         {
+            DisplayMainMenu();
+            
         }
-        public void Menu()
+       
+        static int MenuChoice()
         {
-            //Menu Items
-            //  View Client Information
-            //  View Account Balance
-            //      Checking Account Balance
-            //      Reserve Account Balance
-            //      Savings Account Balance
-            //  Deposit Funds
-            //  Withdraw Funds
-            //  Exit
+            Console.WriteLine();
+            Console.Write(">");
+            int choice = int.Parse(Console.ReadLine());
+            Console.Clear();
+            return choice;
+        }
+        static void DisplayMainMenu()
+        {
+            Console.WriteLine("Main Menu");
+            Console.WriteLine();
+            Console.WriteLine("1.\tView Client Information");
+            Console.WriteLine("2.\tView Account Balance");
+            Console.WriteLine("3.\tDeposit Funds");
+            Console.WriteLine("4.\tWithdraw Funds");
+            Console.WriteLine("5.\tExit");
+
+            switch (MenuChoice())
+            {
+                case 1:         //Client Information
+
+                    break;
+                case 2:         //Account Balance
+                    DisplayBalanceMenu();
+                    break;
+                case 3:         //Deposit
+
+                    break;
+                case 4:         //Withdrawl
+
+                    break;
+                case 5:         //Exit
+                    Environment.Exit(0);
+                    break;
+                default:
+                    break;
+            }
+        }
+        static void DisplayBalanceMenu()
+        {
+            Console.WriteLine("Balance Menu");
+            Console.WriteLine("");
+            Console.WriteLine("1.\tChecking Account Balance");
+            Console.WriteLine("2.\tReserve Account Balance");
+            Console.WriteLine("3.\tSavings Account Balance");
+            Console.WriteLine("4.\tReturn to Main Menu");
+
+            switch (MenuChoice())
+            {
+                case 1:         //Checking Balance
+
+                    break;
+                case 2:         //Reserve Balance
+
+                    break;
+                case 3:         //Savings Balance
+
+                    break;
+                case 4:
+                    DisplayMainMenu();
+                    break;
+            }
 
         }
-
     }
 }
