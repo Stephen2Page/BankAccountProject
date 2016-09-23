@@ -11,10 +11,15 @@ namespace BankAccountProject
     {
         static void Main(string[] args)
         {
-            DisplayMainMenu();
-            
+            Checking myChecking = new Checking(2468, "Magdalena D. Williams", 100.00);
+            //Reserve
+            //Savings
+            DisplayMainMenu(myChecking);
+
+            Console.WriteLine(myChecking.AccountNum);
         }
-       
+
+       //METHODS
         static int MenuChoice()
         {
             Console.WriteLine();
@@ -23,7 +28,7 @@ namespace BankAccountProject
             Console.Clear();
             return choice;
         }
-        static void DisplayMainMenu()
+        static void DisplayMainMenu(Checking currentAccount)
         {
             Console.WriteLine("Main Menu");
             Console.WriteLine();
@@ -35,17 +40,17 @@ namespace BankAccountProject
 
             switch (MenuChoice())
             {
-                case 1:         //Client Information
+                case 1:         //Client Information, Name, Account numbers
 
                     break;
-                case 2:         //Account Balance
-                    DisplayBalanceMenu();
+                case 2:         //Account Balance -- call submenu
+                    DisplayBalanceMenu(currentAccount);
                     break;
                 case 3:         //Deposit
-
+                                    //Which account, amount
                     break;
                 case 4:         //Withdrawl
-
+                    
                     break;
                 case 5:         //Exit
                     Environment.Exit(0);
@@ -54,7 +59,7 @@ namespace BankAccountProject
                     break;
             }
         }
-        static void DisplayBalanceMenu()
+        static void DisplayBalanceMenu(Checking currentAccount)
         {
             Console.WriteLine("Balance Menu");
             Console.WriteLine("");
@@ -75,7 +80,7 @@ namespace BankAccountProject
 
                     break;
                 case 4:
-                    DisplayMainMenu();
+                    DisplayMainMenu(currentAccount);
                     break;
             }
 

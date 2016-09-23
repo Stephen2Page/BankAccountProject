@@ -9,9 +9,9 @@ namespace BankAccountProject
     class Account
     {
         //Fields
-        int accountNum;
-        string accountType;
-        double balance;
+        private int accountNum;
+        private string clientName;
+        private double balance;
 
         //Properties
         public int AccountNum
@@ -19,10 +19,10 @@ namespace BankAccountProject
             get { return this.accountNum; }
             set { this.accountNum = value; }
         }
-        public string AccountType
+        public string ClientName
         {
-            get { return this.accountType; }
-            set { this.accountType = value; }
+            get { return this.clientName; }
+            set { this.clientName = value; }
         }
         public double Balance
         {
@@ -32,23 +32,30 @@ namespace BankAccountProject
             
 
         //Constructors
-        public Account(int accountNum, string accountType, double balance)
-        {
-            AccountNum = accountNum;
-            AccountType = accountType;
-            Balance = balance;
-        }
+        //public Account
+        //    {
+        //    }
+        //public Account(int accountNum, string accountType, double balance)
+        //{
+        //    AccountNum = accountNum;
+        //    AccountType = accountType;
+        //    Balance = balance;
+        //}
 
         //Methods
+        public virtual void Transaction()
+        {
+
+        }
         //  Deposit
-        public double Deposit()
+        public virtual double Deposit()
         {
             Console.WriteLine("Enter amount to be deposted.");
             double deposit = double.Parse(Console.ReadLine());
             return deposit;
         }
         //  Withdrawl
-        public double Withdrawl()
+        public virtual double Withdrawl()
         {
             Console.WriteLine("Enter amount to be withdrawn.");
             double withdrawl = double.Parse(Console.ReadLine());
