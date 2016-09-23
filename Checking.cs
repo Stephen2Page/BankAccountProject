@@ -6,17 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankAccountProject
 {
-    class Transaction
+    class Checking : Account
     {
-        //Fields
-        string date;
-        double amount;
-
-        //Properties
-
-        //Constructors
-
-        //Methods
+        int checkNum;
 
     }
 }

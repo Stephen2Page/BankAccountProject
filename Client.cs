@@ -8,5 +8,15 @@ namespace BankAccountProject
 {
     class Client
     {
+        //Fields
+        string clientName;
+        List<int> clientAccounts = new List<int>();
+
+        //Properties
+
+        //Constructors
+
+        //Methods
+
     }
 }
