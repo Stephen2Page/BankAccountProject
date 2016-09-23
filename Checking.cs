@@ -23,8 +23,15 @@ namespace BankAccountProject
         //Methods
         public override double Withdrawl()
         {
-            //Check number
-            return base.Withdrawl();
+            Console.WriteLine("Please enter check number. (press enter is none)");
+            string checkNumEntered = Console.ReadLine();
+            if (checkNumEntered != null)
+            {
+                int checkNum = int.Parse(checkNumEntered);
+            } 
+            Console.WriteLine("Please enter amount of withdrawl");
+            double withdrawl = double.Parse(Console.ReadLine());
+            return withdrawl;
         }
     }
 }

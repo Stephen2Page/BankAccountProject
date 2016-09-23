@@ -5,6 +5,12 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 
+//TO DO
+    //Re-arrange menus ask account type then action
+    //trap for blank enteries for amounts in withdraw and deposit and check
+    //Record transactions to file
+    //add savings and reserve accounts
+
 namespace BankAccountProject
 {
     class Program
@@ -14,9 +20,12 @@ namespace BankAccountProject
             Checking myChecking = new Checking(2468, "Magdalena D. Williams", 100.00);
             //Reserve
             //Savings
-            DisplayMainMenu(myChecking);
 
-            Console.WriteLine(myChecking.AccountNum);
+            while (true)
+            {
+                DisplayMainMenu(myChecking);
+
+            }
         }
 
        //METHODS
@@ -25,11 +34,12 @@ namespace BankAccountProject
             Console.WriteLine();
             Console.Write(">");
             int choice = int.Parse(Console.ReadLine());
-            Console.Clear();
             return choice;
         }
         static void DisplayMainMenu(Checking currentAccount)
         {
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
             Console.WriteLine("Main Menu");
             Console.WriteLine();
             Console.WriteLine("1.\tView Client Information");
@@ -41,16 +51,17 @@ namespace BankAccountProject
             switch (MenuChoice())
             {
                 case 1:         //Client Information, Name, Account numbers
-
+                    Console.WriteLine(currentAccount.ClientName + currentAccount.AccountNum);
                     break;
                 case 2:         //Account Balance -- call submenu
                     DisplayBalanceMenu(currentAccount);
                     break;
                 case 3:         //Deposit
-                                    //Which account, amount
+                    currentAccount.Deposit();                //Which account, amount
                     break;
                 case 4:         //Withdrawl
-                    
+                    //currentAccount.Withdrawl();
+                    Console.WriteLine(currentAccount.Withdrawl());
                     break;
                 case 5:         //Exit
                     Environment.Exit(0);
@@ -61,6 +72,8 @@ namespace BankAccountProject
         }
         static void DisplayBalanceMenu(Checking currentAccount)
         {
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
             Console.WriteLine("Balance Menu");
             Console.WriteLine("");
             Console.WriteLine("1.\tChecking Account Balance");
