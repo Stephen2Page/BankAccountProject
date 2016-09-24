@@ -88,6 +88,7 @@ namespace BankAccountProject
 
             Console.WriteLine("Date  Time\t| Type | Amout | Balance ");
             Console.WriteLine(transaction);
+            Console.ReadKey();
             writer.WriteLine(transaction);
             writer.Close();
         }

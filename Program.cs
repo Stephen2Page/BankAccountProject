@@ -16,10 +16,14 @@ namespace BankAccountProject
         static void Main(string[] args)
         {
             Client currentClient = new Client("Magdalena D. Williams");
-            Checking currentChecking = new Checking(2468, "Magdalena D. Williams", 100.00);
-            //Reserve
-            //Savings
-            
+            //Checking currentChecking = new Checking(currentClient.ClientAccountNumbers["Checking"], currentClient.ClientName, 500.00);
+            //Checking currentSaving = new Saving(currentClient.ClientAccounts["Savings "], currentClient.ClientName, 2000.00);
+            //Checking currentReserve = new Reserve(currentClient.ClientAccounts["Reserve "], currentClient.ClientName, 100.00);
+
+            //int acc = currentClient.ClientAccountNumbers["Checking"];
+            //Console.WriteLine(currentClient.ClientAccountNumbers["Checking"]);
+            //Console.ReadKey();
+
             while (true)
             {
                 DisplayMainMenu();
@@ -31,7 +35,7 @@ namespace BankAccountProject
                         Console.WriteLine(currentClient.ClientName);
                         Console.WriteLine();
                         Console.WriteLine("Account \tNumber");
-                        foreach (KeyValuePair<string, int> account in currentClient.ClientAccounts)
+                        foreach (KeyValuePair<string, int> account in currentClient.ClientAccountNumbers)
                         {
                             Console.WriteLine(account.Key +"\t"+ account.Value);
                         }
@@ -40,7 +44,7 @@ namespace BankAccountProject
                         Console.ReadKey();
                         break;
                     case 2:         //Account Balance -- call submenu
-                        DisplayBalanceMenu();
+                        DisplayBalanceMenu(currentClient);
                         break;
                     case 3:         //Deposit
                         //action = 'D';
@@ -48,8 +52,9 @@ namespace BankAccountProject
                         break;
                     case 4:         //Withdrawl
                         //action = 'W';
-                        int action = AccountMenu();                //Which account, 
-                        currentChecking.Withdrawl();               //process to withdraw from choosen account
+                        string action = AccountMenu();                //Which account, 
+                        int accountNum = currentClient.ClientAccountNumbers["Checking"];
+                        currentClient.ClientAccounts[accountNum].Withdrawl();        //process to withdraw from choosen account
                         break;
                     case 5:         //Exit
                         Environment.Exit(0);
@@ -81,7 +86,7 @@ namespace BankAccountProject
             Console.WriteLine("5.\tExit");
 
         }
-        static void DisplayBalanceMenu()
+        static void DisplayBalanceMenu(Client currentClient)
         {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
@@ -95,7 +100,7 @@ namespace BankAccountProject
             switch (MenuChoice())
             {
                 case 1:         //Checking Balance
-
+                    Console.WriteLine(currentClient.ClientAccountNumbers);
                     break;
                 case 2:         //Reserve Balance
 
@@ -109,7 +114,7 @@ namespace BankAccountProject
             }
 
         }
-        static int AccountMenu()
+        static string AccountMenu()
         {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
@@ -119,7 +124,23 @@ namespace BankAccountProject
             Console.WriteLine("2.\tReserve Account");
             Console.WriteLine("3.\tSavings Account");
             Console.WriteLine("4.\tReturn to Main Menu");
-            return MenuChoice();
+
+            string choosenAccount = "";
+            switch (MenuChoice())
+            {
+                case 1:         //Checking
+                    return (choosenAccount = "Checking");
+                    break;
+                case 2:         //Reserve 
+                    return (choosenAccount = "Reserve ");
+                    break;
+                case 3:         //Savings
+                    return (choosenAccount = "Savings ");
+                    break;
+                default:
+                    break;
+            }
+            return choosenAccount;
         }
     }
 }
