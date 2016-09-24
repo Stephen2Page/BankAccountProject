@@ -2,4 +2,4 @@ Magdalena D. Williams	Checking	1234
 
 Date  Time	| Type | Amout | Balance 
 
-date&time - 15	485
+date&time - 25	475

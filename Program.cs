@@ -51,10 +51,8 @@ namespace BankAccountProject
                         AccountMenu();               //Which account, amount
                         break;
                     case 4:         //Withdrawl
-                        //action = 'W';
-                        string action = AccountMenu();                //Which account, 
-                        int accountNum = currentClient.ClientAccountNumbers["Checking"];
-                        currentClient.ClientAccounts[accountNum].Withdrawl();        //process to withdraw from choosen account
+                        int accountNum = currentClient.ClientAccountNumbers[AccountMenu()];     //choose account
+                        currentClient.ClientAccounts[accountNum].Withdrawl();                   //process the withdraw from choosen account
                         break;
                     case 5:         //Exit
                         Environment.Exit(0);
@@ -138,6 +136,7 @@ namespace BankAccountProject
                     return (choosenAccount = "Savings ");
                     break;
                 default:
+                    DisplayMainMenu();
                     break;
             }
             return choosenAccount;
