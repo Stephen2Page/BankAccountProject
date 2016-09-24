@@ -13,6 +13,7 @@ namespace BankAccountProject
         private int accountNum;
         private string clientName;
         private double balance;
+        private string fileName;
 
 
         //Properties
@@ -30,6 +31,11 @@ namespace BankAccountProject
         {
             get { return this.balance; }
             set { this.balance = value; }
+        }
+        public string FileName
+        {
+            get { return this.fileName; }
+            set { this.fileName = value; }
         }
     
         //Methods
@@ -57,18 +63,20 @@ namespace BankAccountProject
 
         public string CreateFile(string clientName, int accountNum, string accountType)
         {
-            string fileName = clientName + " " + accountNum + ".txt";
+            string fileName = (clientName + " " + accountNum + ".txt");
             StreamWriter writer = new StreamWriter(fileName);
+
             writer.WriteLine(clientName + "\t" + accountType + "\t" + accountNum);
             writer.WriteLine();
             writer.WriteLine("Date  Time\t| Type | Amout | Balance ");
+            writer.WriteLine();
             writer.Close();
+
             return fileName;
         }
 
         public void WriteFile(string fileName, string transaction)
         {
-
             StreamWriter writer = new StreamWriter(fileName, true);
             writer.WriteLine(transaction);
             writer.Close();

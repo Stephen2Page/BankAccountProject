@@ -19,7 +19,7 @@ namespace BankAccountProject
             AccountNum = accountNum;
             ClientName = clientName;
             Balance = balance;
-            CreateFile(ClientName, AccountNum, "Checking");
+            FileName = CreateFile(ClientName, AccountNum, "Checking");
             
         }
 
@@ -36,7 +36,8 @@ namespace BankAccountProject
             double withdrawl = double.Parse(Console.ReadLine());
             //Check for overdrawn
             Balance -= withdrawl;
-            WriteFile("this is from the Checking class");  //save to file & display on screen
+            string transaction = ("date&time - " + withdrawl + "\t" + Balance);
+            WriteFile(FileName, transaction);  //save to file & display on screen
             return withdrawl;
         }
     }
