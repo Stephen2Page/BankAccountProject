@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 //TO DO
     //trap for blank enteries for amounts in withdraw and deposit
-    //add savings and reserve accounts
+    //DEPOSITs
+    //Clean up display of balance, account info and transaction output.
 
 namespace BankAccountProject
 {
@@ -15,18 +16,12 @@ namespace BankAccountProject
     {
         static void Main(string[] args)
         {
-            Client currentClient = new Client("Magdalena D. Williams");
-            //Checking currentChecking = new Checking(currentClient.ClientAccountNumbers["Checking"], currentClient.ClientName, 500.00);
-            //Checking currentSaving = new Saving(currentClient.ClientAccounts["Savings "], currentClient.ClientName, 2000.00);
-            //Checking currentReserve = new Reserve(currentClient.ClientAccounts["Reserve "], currentClient.ClientName, 100.00);
-
-            //int acc = currentClient.ClientAccountNumbers["Checking"];
-            //Console.WriteLine(currentClient.ClientAccountNumbers["Checking"]);
-            //Console.ReadKey();
+            Client currentClient = new Client("Magdalena D. Williams"); //begining values hard coded under Client
 
             while (true)
             {
                 DisplayMainMenu();
+                int accountNum;
 
                 switch (MenuChoice())
                 {
@@ -39,19 +34,17 @@ namespace BankAccountProject
                         {
                             Console.WriteLine(account.Key +"\t"+ account.Value);
                         }
-                        Console.WriteLine("Press a key to continue.");
-                        Console.WriteLine(">");
-                        Console.ReadKey();
+                        PressAKey();
                         break;
                     case 2:         //Account Balance -- call submenu
                         DisplayBalanceMenu(currentClient);
                         break;
                     case 3:         //Deposit
-                        //action = 'D';
-                        AccountMenu();               //Which account, amount
+                        accountNum = currentClient.ClientAccountNumbers[AccountMenu()];     //choose account
+                        currentClient.ClientAccounts[accountNum].Deposit();                   //process the withdraw from choosen account
                         break;
                     case 4:         //Withdrawl
-                        int accountNum = currentClient.ClientAccountNumbers[AccountMenu()];     //choose account
+                        accountNum = currentClient.ClientAccountNumbers[AccountMenu()];     //choose account
                         currentClient.ClientAccounts[accountNum].Withdrawl();                   //process the withdraw from choosen account
                         break;
                     case 5:         //Exit
@@ -70,6 +63,12 @@ namespace BankAccountProject
             Console.Write(">");
             int choice = int.Parse(Console.ReadLine());
             return choice;
+        }
+        static void PressAKey()
+        {
+            Console.WriteLine("Press a key to continue.");
+            Console.WriteLine(">");
+            Console.ReadKey();
         }
         static void DisplayMainMenu()
         {
@@ -95,19 +94,26 @@ namespace BankAccountProject
             Console.WriteLine("3.\tSavings Account Balance");
             Console.WriteLine("4.\tReturn to Main Menu");
 
+            int accountNum;
             switch (MenuChoice())
             {
                 case 1:         //Checking Balance
-                    Console.WriteLine(currentClient.ClientAccountNumbers);
+                    accountNum = currentClient.ClientAccountNumbers["Checking"];
+                    Console.WriteLine(currentClient.ClientAccounts[accountNum].Balance);
+                    PressAKey();
                     break;
                 case 2:         //Reserve Balance
-
+                    accountNum = currentClient.ClientAccountNumbers["Reserve "];
+                    Console.WriteLine(currentClient.ClientAccounts[accountNum].Balance);
+                    PressAKey();
                     break;
                 case 3:         //Savings Balance
-
+                    accountNum = currentClient.ClientAccountNumbers["Savings "];
+                    Console.WriteLine(currentClient.ClientAccounts[accountNum].Balance);
+                    PressAKey();
                     break;
                 case 4:
-                    //DisplayMainMenu();
+                    DisplayMainMenu();
                     break;
             }
 

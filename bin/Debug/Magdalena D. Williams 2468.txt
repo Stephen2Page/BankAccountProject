@@ -1,4 +1,4 @@
-Magdalena D. Williams	Checking	1234
+Magdalena D. Williams	Reserve	2468
 
 Date  Time	| Type | Amout | Balance 
 

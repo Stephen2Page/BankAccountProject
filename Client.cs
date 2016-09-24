@@ -42,6 +42,13 @@ namespace BankAccountProject
             Checking currentChecking = new Checking(ClientAccountNumbers["Checking"], ClientName, 500.00);
             ClientAccounts.Add(1234, currentChecking);
 
+            Savings currentSavings = new Savings(ClientAccountNumbers["Savings "], ClientName, 2000.00);
+            ClientAccounts.Add(7890, currentSavings);
+
+            Reserve currentReserve = new Reserve(ClientAccountNumbers["Reserve "], ClientName, 100.00);
+            ClientAccounts.Add(2468, currentReserve);
+
+
         }
 
         //Methods
