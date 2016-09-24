@@ -6,7 +6,6 @@ using System.IO;
 using System.Threading.Tasks;
 
 //TO DO
-    //Re-arrange menus ask account type then action
     //trap for blank enteries for amounts in withdraw and deposit and check
     //Record transactions to file
     //add savings and reserve accounts
@@ -24,15 +23,22 @@ namespace BankAccountProject
 
             while (true)
             {
-                DisplayMainMenu(myChecking);
+                DisplayMainMenu(currentChecking);
 
                 switch (MenuChoice())
                 {
                     case 1:         //Client Information, Name, Account numbers
-                        Console.WriteLine(currentAccount.ClientName + currentAccount.AccountNum);
+                        Console.WriteLine(currentClient.ClientName);
+                        Console.WriteLine();
+                        Console.WriteLine("Account\tNumber");
+                        foreach (KeyValuePair<int, string> account in currentClient.ClientAccounts)
+                        {
+                            Console.WriteLine(account.Value +"\t"+ account.Key);
+                        }
+                        Console.ReadKey();
                         break;
                     case 2:         //Account Balance -- call submenu
-                        DisplayBalanceMenu(currentAccount);
+                        DisplayBalanceMenu();
                         break;
                     case 3:         //Deposit
                                         //Which account, amount
@@ -71,7 +77,7 @@ namespace BankAccountProject
             Console.WriteLine("5.\tExit");
 
         }
-        static void DisplayBalanceMenu(Checking currentAccount)
+        static void DisplayBalanceMenu()
         {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
@@ -94,7 +100,7 @@ namespace BankAccountProject
 
                     break;
                 case 4:
-                    DisplayMainMenu(currentAccount);
+                    //DisplayMainMenu();
                     break;
             }
 

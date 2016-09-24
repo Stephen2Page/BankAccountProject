@@ -14,7 +14,7 @@ namespace BankAccountProject
         //Properties
 
         //Constructors
-        public Checking(int accountNum, string clientName, double balance) //: base (accountNum, clientName, balance)
+        public Checking(int accountNum, string clientName, double balance) 
         {
             AccountNum = accountNum;
             ClientName = clientName;
