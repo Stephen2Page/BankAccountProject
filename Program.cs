@@ -17,13 +17,35 @@ namespace BankAccountProject
     {
         static void Main(string[] args)
         {
-            Checking myChecking = new Checking(2468, "Magdalena D. Williams", 100.00);
+            Client currentClient = new Client("Magdalena D. Williams");
+            Checking currentChecking = new Checking(2468, "Magdalena D. Williams", 100.00);
             //Reserve
             //Savings
 
             while (true)
             {
                 DisplayMainMenu(myChecking);
+
+                switch (MenuChoice())
+                {
+                    case 1:         //Client Information, Name, Account numbers
+                        Console.WriteLine(currentAccount.ClientName + currentAccount.AccountNum);
+                        break;
+                    case 2:         //Account Balance -- call submenu
+                        DisplayBalanceMenu(currentAccount);
+                        break;
+                    case 3:         //Deposit
+                                        //Which account, amount
+                        break;
+                    case 4:         //Withdrawl
+                                        //Which account, amount
+                        break;
+                    case 5:         //Exit
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        break;
+                }
 
             }
         }
@@ -48,27 +70,6 @@ namespace BankAccountProject
             Console.WriteLine("4.\tWithdraw Funds");
             Console.WriteLine("5.\tExit");
 
-            switch (MenuChoice())
-            {
-                case 1:         //Client Information, Name, Account numbers
-                    Console.WriteLine(currentAccount.ClientName + currentAccount.AccountNum);
-                    break;
-                case 2:         //Account Balance -- call submenu
-                    DisplayBalanceMenu(currentAccount);
-                    break;
-                case 3:         //Deposit
-                    currentAccount.Deposit();                //Which account, amount
-                    break;
-                case 4:         //Withdrawl
-                    //currentAccount.Withdrawl();
-                    Console.WriteLine(currentAccount.Withdrawl());
-                    break;
-                case 5:         //Exit
-                    Environment.Exit(0);
-                    break;
-                default:
-                    break;
-            }
         }
         static void DisplayBalanceMenu(Checking currentAccount)
         {
