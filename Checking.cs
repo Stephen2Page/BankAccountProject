@@ -27,12 +27,14 @@ namespace BankAccountProject
         public override double Withdrawl()
         {
             Console.WriteLine("Please enter check number. (press enter is none)");
+            Console.Write(">");
             string checkNumEntered = Console.ReadLine();
             if (int.TryParse(checkNumEntered, out checkNum))
             {
                 checkNum = int.Parse(checkNumEntered);
             } 
             Console.WriteLine("Please enter amount of withdrawl");
+            Console.Write(">");
             double withdrawl = double.Parse(Console.ReadLine());
             //Check for overdrawn
             Balance -= withdrawl;

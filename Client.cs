@@ -29,8 +29,9 @@ namespace BankAccountProject
         {
             ClientName = clientName;
             ClientAccounts = clientAccounts;
-            ClientAccounts.Add(1234, "checking");
-            ClientAccounts.Add(7890, "savings");
+            ClientAccounts.Add(1234, "Checking");
+            ClientAccounts.Add(7890, "Savings ");
+            ClientAccounts.Add(2468, "Reserve ");
 
         }
         //Methods

@@ -9,8 +9,8 @@ namespace BankAccountProject
     class Transaction
     {
         //Fields
-        string date;
-        double amount;
+        //string date;
+        //double amount;
 
         //Properties
 

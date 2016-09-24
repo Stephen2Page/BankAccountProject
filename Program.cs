@@ -6,8 +6,7 @@ using System.IO;
 using System.Threading.Tasks;
 
 //TO DO
-    //trap for blank enteries for amounts in withdraw and deposit and check
-    //Record transactions to file
+    //trap for blank enteries for amounts in withdraw and deposit
     //add savings and reserve accounts
 
 namespace BankAccountProject
@@ -23,7 +22,7 @@ namespace BankAccountProject
             
             while (true)
             {
-                DisplayMainMenu(currentChecking);
+                DisplayMainMenu();
 
                 switch (MenuChoice())
                 {
@@ -31,11 +30,13 @@ namespace BankAccountProject
                         //Need screen position for proper alignment
                         Console.WriteLine(currentClient.ClientName);
                         Console.WriteLine();
-                        Console.WriteLine("Account\tNumber");
-                        foreach (KeyValuePair<int, string> account in currentClient.ClientAccounts)
+                        Console.WriteLine("Account \tNumber");
+                        foreach (KeyValuePair<string, int> account in currentClient.ClientAccounts)
                         {
-                            Console.WriteLine(account.Value +"\t"+ account.Key);
+                            Console.WriteLine(account.Key +"\t"+ account.Value);
                         }
+                        Console.WriteLine("Press a key to continue.");
+                        Console.WriteLine(">");
                         Console.ReadKey();
                         break;
                     case 2:         //Account Balance -- call submenu
@@ -67,7 +68,7 @@ namespace BankAccountProject
             int choice = int.Parse(Console.ReadLine());
             return choice;
         }
-        static void DisplayMainMenu(Checking currentAccount)
+        static void DisplayMainMenu()
         {
             Console.Clear();
             Console.SetCursorPosition(0, 0);

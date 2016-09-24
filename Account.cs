@@ -47,14 +47,21 @@ namespace BankAccountProject
         public virtual double Deposit()
         {
             Console.WriteLine("Enter amount to be deposted.");
+            Console.Write(">");
+
             double deposit = double.Parse(Console.ReadLine());
             return deposit;
         }
         //  Withdrawl
         public virtual double Withdrawl()
         {
-            Console.WriteLine("Enter amount to be withdrawn.");
+            Console.WriteLine("Please enter amount of withdrawl");
+            Console.Write(">");
             double withdrawl = double.Parse(Console.ReadLine());
+            //Check for overdrawn
+            Balance -= withdrawl;
+            string transaction = ("date&time - " + withdrawl + "\t" + Balance);
+            WriteFile(FileName, transaction);  //save to file & display on screen
             return withdrawl;
         }
         //  Balance
@@ -78,6 +85,9 @@ namespace BankAccountProject
         public void WriteFile(string fileName, string transaction)
         {
             StreamWriter writer = new StreamWriter(fileName, true);
+
+            Console.WriteLine("Date  Time\t| Type | Amout | Balance ");
+            Console.WriteLine(transaction);
             writer.WriteLine(transaction);
             writer.Close();
         }
