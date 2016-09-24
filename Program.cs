@@ -28,6 +28,7 @@ namespace BankAccountProject
                 switch (MenuChoice())
                 {
                     case 1:         //Client Information, Name, Account numbers
+                        //Need screen position for proper alignment
                         Console.WriteLine(currentClient.ClientName);
                         Console.WriteLine();
                         Console.WriteLine("Account\tNumber");
@@ -41,10 +42,14 @@ namespace BankAccountProject
                         DisplayBalanceMenu();
                         break;
                     case 3:         //Deposit
-                                        //Which account, amount
+                        //action = 'D';
+                        AccountMenu();               //Which account, amount
                         break;
                     case 4:         //Withdrawl
-                                        //Which account, amount
+                        //action = 'W';
+                        int action = AccountMenu();                //Which account, amount
+                        Console.WriteLine("action: " + action);
+                        currentChecking.Withdrawl();
                         break;
                     case 5:         //Exit
                         Environment.Exit(0);
@@ -52,7 +57,6 @@ namespace BankAccountProject
                     default:
                         break;
                 }
-
             }
         }
 
@@ -104,6 +108,18 @@ namespace BankAccountProject
                     break;
             }
 
+        }
+        static int AccountMenu()
+        {
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("Account Menu");
+            Console.WriteLine("");
+            Console.WriteLine("1.\tChecking Account");
+            Console.WriteLine("2.\tReserve Account");
+            Console.WriteLine("3.\tSavings Account");
+            Console.WriteLine("4.\tReturn to Main Menu");
+            return MenuChoice();
         }
     }
 }

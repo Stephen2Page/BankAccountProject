@@ -19,7 +19,8 @@ namespace BankAccountProject
             AccountNum = accountNum;
             ClientName = clientName;
             Balance = balance;
-            }
+        }
+
         //Methods
         public override double Withdrawl()
         {
@@ -31,6 +32,8 @@ namespace BankAccountProject
             } 
             Console.WriteLine("Please enter amount of withdrawl");
             double withdrawl = double.Parse(Console.ReadLine());
+            //adjust balance
+            //save to file & display on screen
             return withdrawl;
         }
     }
