@@ -20,7 +20,7 @@ namespace BankAccountProject
             Checking currentChecking = new Checking(2468, "Magdalena D. Williams", 100.00);
             //Reserve
             //Savings
-
+            
             while (true)
             {
                 DisplayMainMenu(currentChecking);
@@ -47,9 +47,8 @@ namespace BankAccountProject
                         break;
                     case 4:         //Withdrawl
                         //action = 'W';
-                        int action = AccountMenu();                //Which account, amount
-                        Console.WriteLine("action: " + action);
-                        currentChecking.Withdrawl();
+                        int action = AccountMenu();                //Which account, 
+                        currentChecking.Withdrawl();               //process to withdraw from choosen account
                         break;
                     case 5:         //Exit
                         Environment.Exit(0);

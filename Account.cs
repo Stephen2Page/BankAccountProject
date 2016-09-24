@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace BankAccountProject
@@ -29,19 +30,7 @@ namespace BankAccountProject
             get { return this.balance; }
             set { this.balance = value; }
         }
-            
-
-        //Constructors
-        //public Account
-        //    {
-        //    }
-        //public Account(int accountNum, string accountType, double balance)
-        //{
-        //    AccountNum = accountNum;
-        //    AccountType = accountType;
-        //    Balance = balance;
-        //}
-
+    
         //Methods
         public virtual void Transaction()
         {
@@ -62,5 +51,16 @@ namespace BankAccountProject
             return withdrawl;
         }
         //  Balance
+
+        //  Overdrawn
+
+        public void WriteFile(string test)
+        {
+
+            StreamWriter writer = new StreamWriter(clientName + accountNum + ".txt");
+            writer.WriteLine("this is directly in the line");
+            writer.Close();
+        }
+
     }
 }

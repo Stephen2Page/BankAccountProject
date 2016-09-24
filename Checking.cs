@@ -26,14 +26,15 @@ namespace BankAccountProject
         {
             Console.WriteLine("Please enter check number. (press enter is none)");
             string checkNumEntered = Console.ReadLine();
-            if (checkNumEntered != null)
+            if (int.TryParse(checkNumEntered, out checkNum))
             {
-                int checkNum = int.Parse(checkNumEntered);
+                checkNum = int.Parse(checkNumEntered);
             } 
             Console.WriteLine("Please enter amount of withdrawl");
             double withdrawl = double.Parse(Console.ReadLine());
-            //adjust balance
-            //save to file & display on screen
+            //Check for overdrawn
+            Balance -= withdrawl;
+            WriteFile("this is a line of test");  //save to file & display on screen
             return withdrawl;
         }
     }
