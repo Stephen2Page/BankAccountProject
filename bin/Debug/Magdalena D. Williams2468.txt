@@ -1,1 +1,6 @@
 this is directly in the line
+this is another line
+this is from the Checking class
+this is directly in the line
+this is another line
+this is from the Checking class

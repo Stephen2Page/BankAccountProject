@@ -14,6 +14,7 @@ namespace BankAccountProject
         private string clientName;
         private double balance;
 
+
         //Properties
         public int AccountNum
         {
@@ -54,11 +55,22 @@ namespace BankAccountProject
 
         //  Overdrawn
 
-        public void WriteFile(string test)
+        public string CreateFile(string clientName, int accountNum, string accountType)
+        {
+            string fileName = clientName + " " + accountNum + ".txt";
+            StreamWriter writer = new StreamWriter(fileName);
+            writer.WriteLine(clientName + "\t" + accountType + "\t" + accountNum);
+            writer.WriteLine();
+            writer.WriteLine("Date  Time\t| Type | Amout | Balance ");
+            writer.Close();
+            return fileName;
+        }
+
+        public void WriteFile(string fileName, string transaction)
         {
 
-            StreamWriter writer = new StreamWriter(clientName + accountNum + ".txt");
-            writer.WriteLine("this is directly in the line");
+            StreamWriter writer = new StreamWriter(fileName, true);
+            writer.WriteLine(transaction);
             writer.Close();
         }
 
