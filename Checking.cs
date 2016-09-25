@@ -10,8 +10,19 @@ namespace BankAccountProject
     {
         //Fields
         private int checkNum;
+        private double minimumBalance;
 
         //Properties
+        public int CheckNum
+        {
+            get { return this.checkNum; }
+            set { this.checkNum = value; }
+        }
+        public double MinimumBalance
+        {
+            get { return this.minimumBalance; }
+            set { this.minimumBalance = value; }
+        }
 
         //Constructors
         public Checking(int accountNum, string clientName, double balance) 

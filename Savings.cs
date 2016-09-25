@@ -9,9 +9,20 @@ namespace BankAccountProject
     class Savings : Account
     {
         //Fields
+        private float interestRate;
+        private double minmumBalance;
 
         //Properties
-
+        public float InterestRate
+        {
+            get { return this.interestRate; }
+            set { this.interestRate = value; }
+        }
+        public double MinimumBalance
+        {
+            get { return this.minmumBalance; }
+            set { this.minmumBalance = value; }
+        }
         //Contructors
         public Savings(int accountNum, string clientName, double balance)
         {

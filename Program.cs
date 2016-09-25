@@ -9,6 +9,7 @@ using System.Threading.Tasks;
     //trap for blank enteries for amounts in withdraw and deposit
     //DEPOSITs
     //Clean up display of balance, account info and transaction output.
+    //Overdrawn or minimum balance
 
 namespace BankAccountProject
 {
