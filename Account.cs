@@ -51,8 +51,7 @@ namespace BankAccountProject
             double deposit = double.Parse(Console.ReadLine());
 
             Balance += deposit;
-            string transaction = ("date&time + " + deposit + "\t" + Balance);
-            WriteFile(FileName, transaction);  //save to file & display on screen
+            WriteFile(FileName, '+', deposit, Balance);  //save to file & display on screen
             return deposit;
         }
         //  Withdrawl
@@ -64,8 +63,7 @@ namespace BankAccountProject
             //Check for overdrawn
 
             Balance -= withdrawl;
-            string transaction = ("date&time - " + withdrawl + "\t" + Balance);
-            WriteFile(FileName, transaction);  //save to file & display on screen
+            WriteFile(FileName, '-', withdrawl, Balance);  //save to file & display on screen
             return withdrawl;
         }
         //  Balance
@@ -86,15 +84,15 @@ namespace BankAccountProject
             return fileName;
         }
 
-        public void WriteFile(string fileName, string transaction)
+        public void WriteFile(string fileName, char transactionType, double withdrawl, double balance)
         {
             StreamWriter writer = new StreamWriter(fileName, true);
-
-            Console.WriteLine("Date  Time\t| Type | Amout | Balance ");
-            Console.WriteLine(transaction);            
+            
+            Console.WriteLine("  Date\t    Time\t  | Type |  Amout \t| Balance ");
+            Console.WriteLine("{0,0} {1,9} {2,9} {3,15}", DateTime.Now, transactionType, withdrawl.ToString("C"), balance.ToString("C"));
             Console.ReadKey();
 
-            writer.WriteLine(transaction);
+            writer.WriteLine("{0,0} {1,9} {2,9} {3,15}", DateTime.Now, transactionType, withdrawl.ToString("C"), balance.ToString("C"));
             writer.Close();
         }
 

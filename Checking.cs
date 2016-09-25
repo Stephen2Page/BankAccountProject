@@ -43,15 +43,17 @@ namespace BankAccountProject
             if (int.TryParse(checkNumEntered, out checkNum))
             {
                 checkNum = int.Parse(checkNumEntered);
-            } 
-            Console.WriteLine("Please enter amount of withdrawl");
-            Console.Write(">");
-            double withdrawl = double.Parse(Console.ReadLine());
-            //Check for overdrawn
-            Balance -= withdrawl;
-            string transaction = ("date&time - " + withdrawl + "\t" + Balance);
-            WriteFile(FileName, transaction);  //save to file & display on screen
-            return withdrawl;
+            }
+            return base.Withdrawl();
+            //May need following code if base call is not working with checknum
+            //Console.WriteLine("Please enter amount of withdrawl");
+            //Console.Write(">");
+            //double withdrawl = double.Parse(Console.ReadLine());
+            ////Check for overdrawn
+            //Balance -= withdrawl;
+            //string transaction = ("date&time - " + withdrawl + "\t" + Balance);
+            //WriteFile(FileName, transaction);  //save to file & display on screen
+            //return withdrawl;
         }
     }
 }

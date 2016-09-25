@@ -2,4 +2,3 @@ Magdalena D. Williams	Savings	7890
 
 Date  Time	| Type | Amout | Balance 
 
-date&time - 45	2045

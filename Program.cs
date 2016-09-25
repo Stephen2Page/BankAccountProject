@@ -9,6 +9,7 @@ using System.Threading.Tasks;
     //trap for blank enteries for amounts in withdraw and deposit
     //DEPOSITs
     //Clean up display of balance, account info and transaction output.
+    //Ammounts need two decimal places in display
     //Overdrawn or minimum balance
 
 namespace BankAccountProject
@@ -27,15 +28,8 @@ namespace BankAccountProject
                 switch (MenuChoice())
                 {
                     case 1:         //Client Information, Name, Account numbers
-                        //Need screen position for proper alignment
-                        Console.WriteLine(currentClient.ClientName);
-                        Console.WriteLine();
-                        Console.WriteLine("Account \tNumber");
-                        foreach (KeyValuePair<string, int> account in currentClient.ClientAccountNumbers)
-                        {
-                            Console.WriteLine(account.Key +"\t"+ account.Value);
-                        }
-                        PressAKey();
+                                    //Need screen position for proper alignment
+                        DisplayClientAccounts(currentClient);
                         break;
                     case 2:         //Account Balance -- call submenu
                         DisplayBalanceMenu(currentClient);
@@ -65,12 +59,14 @@ namespace BankAccountProject
             int choice = int.Parse(Console.ReadLine());
             return choice;
         }
+
         static void PressAKey()
         {
             Console.WriteLine("Press a key to continue.");
-            Console.WriteLine(">");
+            Console.Write(">");
             Console.ReadKey();
         }
+
         static void DisplayMainMenu()
         {
             Console.Clear();
@@ -82,8 +78,26 @@ namespace BankAccountProject
             Console.WriteLine("3.\tDeposit Funds");
             Console.WriteLine("4.\tWithdraw Funds");
             Console.WriteLine("5.\tExit");
-
         }
+
+        static void DisplayClientAccounts(Client currentClient)
+        {
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine(currentClient.ClientName);
+            Console.WriteLine();
+            Console.WriteLine("Account \tNumber");
+            Console.WriteLine();
+
+            foreach (KeyValuePair<string, int> account in currentClient.ClientAccountNumbers)
+            {
+                Console.WriteLine(account.Key + "\t" + account.Value);
+            }
+
+            Console.WriteLine();
+            PressAKey();
+        }
+
         static void DisplayBalanceMenu(Client currentClient)
         {
             Console.Clear();
@@ -119,6 +133,7 @@ namespace BankAccountProject
             }
 
         }
+
         static string AccountMenu()
         {
             Console.Clear();
