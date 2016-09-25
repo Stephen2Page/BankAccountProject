@@ -16,37 +16,47 @@ namespace BankAccountProject
     {
         static void Main(string[] args)
         {
-            Client currentClient = new Client("Magdalena D. Williams"); //begining values hard coded under Client
-
-            while (true)
+            string userName;
+            bool currentUser = true;
+            do
             {
-                DisplayMainMenu();
-                int accountNum;
+                Console.WriteLine("Enter Account Holder's Name.");
+                userName = (Console.ReadLine());
+                Client currentClient = new Client(userName); //begining values hard coded under Client
 
-                switch (MenuChoice())
+                while (currentUser == true)
                 {
-                    case 1:         //Client Information, Name, Account numbers
-                                    //Need screen position for proper alignment
-                        DisplayClientAccounts(currentClient);
-                        break;
-                    case 2:         //Account Balance -- call submenu
-                        DisplayBalanceMenu(currentClient);
-                        break;
-                    case 3:         //Deposit
-                        accountNum = currentClient.ClientAccountNumbers[AccountMenu()];     //choose account
-                        currentClient.ClientAccounts[accountNum].Deposit();                   //process the withdraw from choosen account
-                        break;
-                    case 4:         //Withdrawl
-                        accountNum = currentClient.ClientAccountNumbers[AccountMenu()];     //choose account
-                        currentClient.ClientAccounts[accountNum].Withdrawl();                   //process the withdraw from choosen account
-                        break;
-                    case 5:         //Exit
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        break;
+                    DisplayMainMenu();
+                    int accountNum;
+
+                    switch (MenuChoice())
+                    {
+                        case 1:         //Client Information, Name, Account numbers
+                                        //Need screen position for proper alignment
+                            DisplayClientAccounts(currentClient);
+                            break;
+                        case 2:         //Account Balance -- call submenu
+                            DisplayBalanceMenu(currentClient);
+                            break;
+                        case 3:         //Deposit
+                            accountNum = currentClient.ClientAccountNumbers[AccountMenu()];     //choose account
+                            currentClient.ClientAccounts[accountNum].Deposit();                   //process the withdraw from choosen account
+                            break;
+                        case 4:         //Withdrawl
+                            accountNum = currentClient.ClientAccountNumbers[AccountMenu()];     //choose account
+                            currentClient.ClientAccounts[accountNum].Withdrawl();                   //process the withdraw from choosen account
+                            break;
+                        case 5:         //Exit
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            currentUser = false;
+                            break;
+                    }
                 }
+                currentUser = true;
             }
+            while (true);
         }
 
        //METHODS
@@ -76,6 +86,7 @@ namespace BankAccountProject
             Console.WriteLine("3.\tDeposit Funds");
             Console.WriteLine("4.\tWithdraw Funds");
             Console.WriteLine("5.\tExit");
+            Console.WriteLine("6.\tLogout to switch user");
         }
 
         static void DisplayClientAccounts(Client currentClient)

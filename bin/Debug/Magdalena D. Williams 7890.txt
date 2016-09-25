@@ -1,6 +1,0 @@
-Magdalena D. Williams	Savings	Account #:  7890
-
-  Date	    Time	  | Type |  Amout 	| Balance 
-
-9/25/2016 1:45:12 PM  Opening Balance:          $2,000.00
-9/25/2016 1:45:31 PM         +    $40.00        $2,040.00
