@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 //TO DO
     //trap for blank enteries for amounts in withdraw and deposit
-    //DEPOSITs
-    //Clean up display of balance, account info and transaction output.
-    //Ammounts need two decimal places in display
     //Overdrawn or minimum balance
+    //implement check numbers
 
 namespace BankAccountProject
 {

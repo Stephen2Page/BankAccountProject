@@ -30,7 +30,7 @@ namespace BankAccountProject
             AccountNum = accountNum;
             ClientName = clientName;
             Balance = balance;
-            FileName = CreateFile(ClientName, AccountNum, "Reserve");
+            FileName = CreateFile(ClientName, AccountNum, "Reserve", Balance);
 
         }
 

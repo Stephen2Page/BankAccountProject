@@ -48,7 +48,12 @@ namespace BankAccountProject
         {
             Console.WriteLine("Enter amount to be deposted.");
             Console.Write(">");
-            double deposit = double.Parse(Console.ReadLine());
+            double deposit;
+            while (!double.TryParse((Console.ReadLine()), out deposit)) //checking for valid input
+            {
+                Console.WriteLine("Please enter a valid dollar amount.");
+                Console.Write(">");
+            }
 
             Balance += deposit;
             WriteFile(FileName, '+', deposit, Balance);  //save to file & display on screen
@@ -59,8 +64,13 @@ namespace BankAccountProject
         {
             Console.WriteLine("Please enter amount of withdrawl");
             Console.Write(">");
-            double withdrawl = double.Parse(Console.ReadLine());
-            //Check for overdrawn
+            double withdrawl;
+            while (!double.TryParse((Console.ReadLine()), out withdrawl))
+            {
+                Console.WriteLine("Please enter a valid dollar amount");
+                Console.Write(">");
+            }
+            Overdrawn(withdrawl, Balance);                  //Check for overdrawn
 
             Balance -= withdrawl;
             WriteFile(FileName, '-', withdrawl, Balance);  //save to file & display on screen
@@ -69,16 +79,25 @@ namespace BankAccountProject
         //  Balance
 
         //  Overdrawn
-
-        public string CreateFile(string clientName, int accountNum, string accountType)
+        public void Overdrawn(double withdrawl, double balance)
         {
+            if (withdrawl > balance)
+            {
+                Console.WriteLine("Please check your balance and enter a smaller amount.");
+            }
+        }
+
+        public string CreateFile(string clientName, int accountNum, string accountType, double balance)
+        {
+            //Creates a file when account is created, generates name and sets up header in file, returns file name to account object
             string fileName = (clientName + " " + accountNum + ".txt");
             StreamWriter writer = new StreamWriter(fileName);
 
-            writer.WriteLine(clientName + "\t" + accountType + "\t" + accountNum);
+            writer.WriteLine(clientName + "\t" + accountType + "\tAccount #:  " + accountNum);
             writer.WriteLine();
-            writer.WriteLine("Date  Time\t| Type | Amout | Balance ");
+            writer.WriteLine("  Date\t    Time\t  | Type |  Amout \t| Balance ");
             writer.WriteLine();
+            writer.WriteLine("{0,0} {1,14} {2,18}", DateTime.Now, " Opening Balance:", balance.ToString("C"));
             writer.Close();
 
             return fileName;
@@ -89,10 +108,10 @@ namespace BankAccountProject
             StreamWriter writer = new StreamWriter(fileName, true);
             
             Console.WriteLine("  Date\t    Time\t  | Type |  Amout \t| Balance ");
-            Console.WriteLine("{0,0} {1,9} {2,9} {3,15}", DateTime.Now, transactionType, withdrawl.ToString("C"), balance.ToString("C"));
+            Console.WriteLine("{0,0} {1,9} {2,9} {3,16}", DateTime.Now, transactionType, withdrawl.ToString("C"), balance.ToString("C"));
             Console.ReadKey();
 
-            writer.WriteLine("{0,0} {1,9} {2,9} {3,15}", DateTime.Now, transactionType, withdrawl.ToString("C"), balance.ToString("C"));
+            writer.WriteLine("{0,0} {1,9} {2,9} {3,16}", DateTime.Now, transactionType, withdrawl.ToString("C"), balance.ToString("C"));
             writer.Close();
         }
 

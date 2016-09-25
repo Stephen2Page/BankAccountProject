@@ -52,6 +52,5 @@ namespace BankAccountProject
         }
 
         //Methods
-        //display cusotmer name and accounts for menu item 1.
     }
 }

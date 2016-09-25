@@ -1,4 +1,5 @@
-Magdalena D. Williams	Checking	1234
+Magdalena D. Williams	Checking	Account #:  1234
 
-Date  Time	| Type | Amout | Balance 
+  Date	    Time	  | Type |  Amout 	| Balance 
 
+9/25/2016 1:45:12 PM  Opening Balance:            $500.00

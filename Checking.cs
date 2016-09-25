@@ -10,7 +10,7 @@ namespace BankAccountProject
     {
         //Fields
         private int checkNum;
-        private double minimumBalance;
+        private double serviceFee;
 
         //Properties
         public int CheckNum
@@ -18,10 +18,10 @@ namespace BankAccountProject
             get { return this.checkNum; }
             set { this.checkNum = value; }
         }
-        public double MinimumBalance
+        public double ServiceFee
         {
-            get { return this.minimumBalance; }
-            set { this.minimumBalance = value; }
+            get { return this.serviceFee; }
+            set { this.serviceFee = value; }
         }
 
         //Constructors
@@ -30,30 +30,46 @@ namespace BankAccountProject
             AccountNum = accountNum;
             ClientName = clientName;
             Balance = balance;
-            FileName = CreateFile(ClientName, AccountNum, "Checking");
+            ServiceFee = 5.00;
+            FileName = CreateFile(ClientName, AccountNum, "Checking", Balance);
             
         }
 
         //Methods
         public override double Withdrawl()
         {
-            Console.WriteLine("Please enter check number. (press enter is none)");
+            Console.WriteLine("Please enter check number. (press enter if none)");
             Console.Write(">");
             string checkNumEntered = Console.ReadLine();
             if (int.TryParse(checkNumEntered, out checkNum))
             {
                 checkNum = int.Parse(checkNumEntered);
             }
-            return base.Withdrawl();
-            //May need following code if base call is not working with checknum
-            //Console.WriteLine("Please enter amount of withdrawl");
-            //Console.Write(">");
-            //double withdrawl = double.Parse(Console.ReadLine());
-            ////Check for overdrawn
-            //Balance -= withdrawl;
-            //string transaction = ("date&time - " + withdrawl + "\t" + Balance);
-            //WriteFile(FileName, transaction);  //save to file & display on screen
-            //return withdrawl;
+            else
+            {
+                return Withdrawl();
+            }
+            //Process check
+            Console.WriteLine("Please enter amount of check");
+            Console.Write(">");
+            double withdrawl;
+            while (!double.TryParse((Console.ReadLine()), out withdrawl))
+            {
+                Console.WriteLine("Please enter a valid dollar amount");
+                Console.Write(">");
+            }
+            if (withdrawl > Balance)
+            {
+                //transfer money from reserve
+                //access service fee
+                //write to file
+                //notify user on screen
+            }
+
+                Balance -= withdrawl;
+            WriteFile(FileName, '-', withdrawl, Balance);  //save to file & display on screen
+            return withdrawl;
+
         }
     }
 }

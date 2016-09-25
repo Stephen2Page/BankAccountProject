@@ -11,6 +11,7 @@ namespace BankAccountProject
         //Fields
         private float interestRate;
         private double minmumBalance;
+        private double serviceFee;
 
         //Properties
         public float InterestRate
@@ -29,7 +30,7 @@ namespace BankAccountProject
             AccountNum = accountNum;
             ClientName = clientName;
             Balance = balance;
-            FileName = CreateFile(ClientName, AccountNum, "Savings");
+            FileName = CreateFile(ClientName, AccountNum, "Savings", Balance);
 
         }
 
