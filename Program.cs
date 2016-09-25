@@ -6,9 +6,9 @@ using System.IO;
 using System.Threading.Tasks;
 
 //TO DO
-    //trap for blank enteries for amounts in withdraw and deposit
     //Overdrawn or minimum balance
     //implement check numbers
+    //Create method to increment account numbers
 
 namespace BankAccountProject
 {
@@ -16,13 +16,11 @@ namespace BankAccountProject
     {
         static void Main(string[] args)
         {
-            string userName;
+
             bool currentUser = true;
             do
             {
-                Console.WriteLine("Enter Account Holder's Name.");
-                userName = (Console.ReadLine());
-                Client currentClient = new Client(userName); //begining values hard coded under Client
+                Client currentClient = CreateClientAccounts();
 
                 while (currentUser == true)
                 {
@@ -75,6 +73,25 @@ namespace BankAccountProject
             Console.ReadKey();
         }
 
+        static Client CreateClientAccounts()
+        {
+            string userName;
+            double savingsOpen;
+            double checkingOpen;
+            double reserveOpen;
+
+            Console.WriteLine("Enter Account Holder's Name.");
+            userName = (Console.ReadLine());
+            Console.WriteLine("Enter starting savings deposit");
+            savingsOpen = double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter starting checking deposit");
+            checkingOpen = double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter starting reserve deposit");
+            reserveOpen = double.Parse(Console.ReadLine());
+            Client currentClient = new Client(userName, savingsOpen, checkingOpen, reserveOpen); //begining values hard coded under Client
+            return currentClient;
+        }
+
         static void DisplayMainMenu()
         {
             Console.Clear();
@@ -123,17 +140,20 @@ namespace BankAccountProject
             {
                 case 1:         //Checking Balance
                     accountNum = currentClient.ClientAccountNumbers["Checking"];
-                    Console.WriteLine(currentClient.ClientAccounts[accountNum].Balance);
+                    Console.WriteLine("The Checking account balance is:  " + currentClient.ClientAccounts[accountNum].Balance);
+                    Console.WriteLine();
                     PressAKey();
                     break;
                 case 2:         //Reserve Balance
                     accountNum = currentClient.ClientAccountNumbers["Reserve "];
-                    Console.WriteLine(currentClient.ClientAccounts[accountNum].Balance);
+                    Console.WriteLine("The Reserve account balance is:  " + currentClient.ClientAccounts[accountNum].Balance);
+                    Console.WriteLine();
                     PressAKey();
                     break;
                 case 3:         //Savings Balance
                     accountNum = currentClient.ClientAccountNumbers["Savings "];
-                    Console.WriteLine(currentClient.ClientAccounts[accountNum].Balance);
+                    Console.WriteLine("The Savings account balance is:  " + currentClient.ClientAccounts[accountNum].Balance);
+                    Console.WriteLine();
                     PressAKey();
                     break;
                 case 4:
