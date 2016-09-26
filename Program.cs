@@ -29,8 +29,7 @@ namespace BankAccountProject
 
                     switch (MenuChoice())
                     {
-                        case 1:         //Client Information, Name, Account numbers
-                                        //Need screen position for proper alignment
+                        case 1:         //Client Information, Name, Account numbers                                        
                             DisplayClientAccounts(currentClient);
                             break;
                         case 2:         //Account Balance -- call submenu
@@ -47,7 +46,7 @@ namespace BankAccountProject
                         case 5:         //Exit
                             Environment.Exit(0);
                             break;
-                        default:
+                        default:        //switch user
                             currentUser = false;
                             break;
                     }
