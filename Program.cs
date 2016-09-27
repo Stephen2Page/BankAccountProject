@@ -26,7 +26,7 @@ namespace BankAccountProject
                 {
                     DisplayMainMenu();
                     int accountNum;
-
+                    
                     switch (MenuChoice())
                     {
                         case 1:         //Client Information, Name, Account numbers                                        

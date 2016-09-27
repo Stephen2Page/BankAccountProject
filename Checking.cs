@@ -41,9 +41,9 @@ namespace BankAccountProject
             Console.WriteLine("Please enter check number. (press enter if none)");
             Console.Write(">");
             string checkNumEntered = Console.ReadLine();
-            if (int.TryParse(checkNumEntered, out checkNum))
+            if (int.TryParse(checkNumEntered, out checkNum)) 
             {
-                checkNum = int.Parse(checkNumEntered);
+                checkNum = int.Parse(checkNumEntered);      // if not a check
             }
             else
             {
@@ -58,7 +58,7 @@ namespace BankAccountProject
                 Console.WriteLine("Please enter a valid dollar amount");
                 Console.Write(">");
             }
-            if (withdrawl > Balance)
+            //if (withdrawl > Balance)
             {
                 //transfer money from reserve
                 //access service fee
